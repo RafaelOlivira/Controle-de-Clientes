@@ -2,13 +2,13 @@ package com.rafakliv.sistema.clientes.controllers;
 
 import com.rafakliv.sistema.clientes.CustomError.ErrorMessage;
 import com.rafakliv.sistema.clientes.models.CustomersModels;
-import com.rafakliv.sistema.clientes.repositories.CustomersRepository;
 import com.rafakliv.sistema.clientes.services.CustomersServices;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.http.ResponseEntity;
 import org.springframework.web.bind.annotation.*;
 
 import java.util.List;
+import java.util.Optional;
 import java.util.UUID;
 
 
