@@ -1,6 +1,8 @@
 package com.rafakliv.sistema.clientes.repositories;
 
 import com.rafakliv.sistema.clientes.models.CustomersModels;
+import org.springframework.data.domain.Page;
+import org.springframework.data.domain.Pageable;
 import org.springframework.data.jpa.repository.JpaRepository;
 import org.springframework.stereotype.Repository;
 
@@ -17,11 +19,11 @@ public interface CustomersRepository extends JpaRepository<CustomersModels, UUID
 
     CustomersModels findByName(String name);
 
-    List<CustomersModels> findByCountry(String country);
+    Page<CustomersModels> findByCountry(String country, Pageable pageable);
 
-    List<CustomersModels> findByCity(String city);
+    Page<CustomersModels> findByCity(String city,Pageable pageable);
 
-    List<CustomersModels> findByTypeCustomers(String typeCustomers);
+    Page<CustomersModels> findByTypeCustomers(String typeCustomers,Pageable pageable);
 
-    List<CustomersModels> findByRoad(String road);
+    Page<CustomersModels> findByRoad(String road,Pageable pageable);
 }

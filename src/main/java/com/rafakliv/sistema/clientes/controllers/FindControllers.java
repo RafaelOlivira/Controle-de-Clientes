@@ -4,6 +4,8 @@ import com.rafakliv.sistema.clientes.CustomError.ErrorMessage;
 import com.rafakliv.sistema.clientes.models.CustomersModels;
 import com.rafakliv.sistema.clientes.services.CustomersServices;
 import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.data.domain.Page;
+import org.springframework.data.domain.Pageable;
 import org.springframework.http.ResponseEntity;
 import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.PathVariable;
@@ -22,8 +24,9 @@ public class FindControllers {
     private CustomersServices customersServices;
 
     @GetMapping
-    public List<CustomersModels> displayCustomers() {
-        return customersServices.displayCustomers();
+    public ResponseEntity<Page<CustomersModels>> displayCustomers(Pageable pageable) {
+        var customers = customersServices.displayCustomers(pageable);
+        return ResponseEntity.ok(customers);
     }
 
     @GetMapping("/email/{email}")
@@ -64,22 +67,26 @@ public class FindControllers {
     }
 
     @GetMapping("/country/{country}")
-    public List<CustomersModels> findByCountry(@PathVariable String country){
-        return customersServices.findByCountry(country);
+    public ResponseEntity<Page<CustomersModels>> findByCountry(@PathVariable String country,Pageable pageable){
+        var customers = customersServices.findByCountry(country,pageable);
+        return ResponseEntity.ok(customers);
     }
 
     @GetMapping("/city/{city}")
-    public List<CustomersModels> findByCity(@PathVariable String city){
-        return customersServices.findByCity(city);
+    public ResponseEntity<Page<CustomersModels>> findByCity(@PathVariable String city,Pageable pageable){
+        var customers = customersServices.findByCity(city,pageable);
+        return ResponseEntity.ok(customers);
     }
 
     @GetMapping("/type/{typeCustomers}")
-    public List<CustomersModels> findByTypeCustomers(@PathVariable String typeCustomers){
-        return customersServices.findByTypeCustomers(typeCustomers);
+    public ResponseEntity<Page<CustomersModels>> findByTypeCustomers(@PathVariable String typeCustomers,Pageable pageable){
+        var customers = customersServices.findByTypeCustomers(typeCustomers,pageable);
+        return ResponseEntity.ok(customers);
     }
 
     @GetMapping("/road/{road}")
-    public List<CustomersModels> findByRoad(@PathVariable String road){
-        return customersServices.findByRoad(road);
+    public ResponseEntity<Page<CustomersModels>> findByRoad(@PathVariable String road, Pageable pageable){
+        var customers = customersServices.findByRoad(road,pageable);
+        return ResponseEntity.ok(customers);
     }
 }

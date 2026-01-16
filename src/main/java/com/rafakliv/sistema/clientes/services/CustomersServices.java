@@ -3,6 +3,8 @@ package com.rafakliv.sistema.clientes.services;
 import com.rafakliv.sistema.clientes.models.CustomersModels;
 import com.rafakliv.sistema.clientes.repositories.CustomersRepository;
 import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.data.domain.Page;
+import org.springframework.data.domain.Pageable;
 import org.springframework.stereotype.Service;
 
 import java.util.List;
@@ -25,8 +27,8 @@ public class CustomersServices {
     }
 
     // Display Customers
-    public List<CustomersModels> displayCustomers() {
-        return customersRepository.findAll();
+    public Page<CustomersModels> displayCustomers(Pageable pageable) {
+        return customersRepository.findAll(pageable);
     }
 
     // Remove Customers
@@ -63,22 +65,22 @@ public class CustomersServices {
     }
 
     // Find By Country
-    public List<CustomersModels> findByCountry(String country) {
-        return customersRepository.findByCountry(country);
+    public Page<CustomersModels> findByCountry(String country, Pageable pageable) {
+        return customersRepository.findByCountry(country,pageable);
     }
 
     // Find By City
-    public List<CustomersModels> findByCity(String city){
-        return customersRepository.findByCity(city);
+    public Page<CustomersModels> findByCity(String city,Pageable pageable){
+        return customersRepository.findByCity(city,pageable);
     }
 
     // Find By Type Customers
-    public List<CustomersModels> findByTypeCustomers(String typeCustomers){
-        return customersRepository.findByTypeCustomers(typeCustomers);
+    public Page<CustomersModels> findByTypeCustomers(String typeCustomers,Pageable pageable){
+        return customersRepository.findByTypeCustomers(typeCustomers,pageable);
     }
 
     // Find By Road
-    public List<CustomersModels> findByRoad(String road){
-        return customersRepository.findByRoad(road);
+    public Page<CustomersModels> findByRoad(String road,Pageable pageable){
+        return customersRepository.findByRoad(road,pageable);
     }
 }
