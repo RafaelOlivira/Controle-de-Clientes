@@ -4,12 +4,12 @@ import com.rafakliv.sistema.clientes.CustomError.ErrorMessage;
 import com.rafakliv.sistema.clientes.models.CustomersModels;
 import com.rafakliv.sistema.clientes.services.CustomersServices;
 import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.cache.annotation.Cacheable;
 import org.springframework.data.domain.Page;
 import org.springframework.data.domain.Pageable;
 import org.springframework.http.ResponseEntity;
 import org.springframework.web.bind.annotation.*;
 
-import java.util.List;
 import java.util.UUID;
 
 
@@ -20,6 +20,7 @@ public class CustomersControllers {
     @Autowired
     private CustomersServices customersServices;
 
+    @Cacheable(value = "displayCustomers",key = "#pageable.pageNumber + '-' + #pageable.pageSize")
     @GetMapping
     public ResponseEntity<Page<CustomersModels>> displayCustomers(Pageable pageable) {
         var customers = customersServices.displayCustomers(pageable);

@@ -4,6 +4,7 @@ import com.rafakliv.sistema.clientes.CustomError.ErrorMessage;
 import com.rafakliv.sistema.clientes.models.CustomersModels;
 import com.rafakliv.sistema.clientes.services.CustomersServices;
 import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.cache.annotation.Cacheable;
 import org.springframework.data.domain.Page;
 import org.springframework.data.domain.Pageable;
 import org.springframework.http.ResponseEntity;
@@ -23,11 +24,14 @@ public class FindControllers {
     @Autowired
     private CustomersServices customersServices;
 
+
+    @Cacheable(value = "displayCustomers",key = "#pageable.pageNumber + '-' + #pageable.pageSize")
     @GetMapping
     public ResponseEntity<Page<CustomersModels>> displayCustomers(Pageable pageable) {
         var customers = customersServices.displayCustomers(pageable);
         return ResponseEntity.ok(customers);
     }
+
 
     @GetMapping("/email/{email}")
     public ResponseEntity<?> findByEmail(@PathVariable String email){
@@ -66,24 +70,28 @@ public class FindControllers {
         }
     }
 
+    @Cacheable(value = "findByCountry" , key = "#email + '-' + #pageable.pageNumber + '-' + #pageable.pageSize + '-' ")
     @GetMapping("/country/{country}")
     public ResponseEntity<Page<CustomersModels>> findByCountry(@PathVariable String country,Pageable pageable){
         var customers = customersServices.findByCountry(country,pageable);
         return ResponseEntity.ok(customers);
     }
 
+    @Cacheable(value = "findByCity", key = "#city + '-' + #pageable.pageNumber + '-' + #pageable.pageSize + '-'")
     @GetMapping("/city/{city}")
     public ResponseEntity<Page<CustomersModels>> findByCity(@PathVariable String city,Pageable pageable){
         var customers = customersServices.findByCity(city,pageable);
         return ResponseEntity.ok(customers);
     }
 
+    @Cacheable(value = "findByTypeCustomers",key = "#typeCustomers + '-' + #pageable.pageNumber + '-' + #pageable.pageSize + '-'")
     @GetMapping("/type/{typeCustomers}")
     public ResponseEntity<Page<CustomersModels>> findByTypeCustomers(@PathVariable String typeCustomers,Pageable pageable){
         var customers = customersServices.findByTypeCustomers(typeCustomers,pageable);
         return ResponseEntity.ok(customers);
     }
 
+    @Cacheable(value = "findByRoad",key = "#road + '-' + #pageable.pageNumber + '-' + #pageable.pageSize")
     @GetMapping("/road/{road}")
     public ResponseEntity<Page<CustomersModels>> findByRoad(@PathVariable String road, Pageable pageable){
         var customers = customersServices.findByRoad(road,pageable);
