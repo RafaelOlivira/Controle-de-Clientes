@@ -44,16 +44,15 @@ main .content-introduction{
     
 }
 main .content-introduction h1{
-    font-size: 50px;
+    font-size: 30px;
     font-weight: bold;
 
 }
 main .content-introduction p{
-    font-size: 20px;
+    font-size: 12px;
     font-weight: 400;
 }
 main .content-register{
-
     background-color:  rgba(77, 189, 233, 0.5);
     width: 620px;
     padding-left: 30px;
@@ -102,7 +101,13 @@ main .content-register #type_customers{
     border-radius: 5px;
     cursor: pointer;
 }
+.buttons{
+    display:inline-block;
+}
 
+.display{
+    width: 137px;
+}
 button{
     margin-top: 20px;
     margin-left: 500px;
@@ -112,6 +117,10 @@ button{
     cursor: pointer;
     font-size: 18px;
     font-weight: bold;
+}
+a{
+    text-decoration:none;
+    color:black;
 }
 
 /*Fim section*/
