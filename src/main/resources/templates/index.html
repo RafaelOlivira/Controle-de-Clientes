@@ -1,0 +1,61 @@
+<!DOCTYPE html>
+<html lang="pt-br" xmlns:th="http://www.thymeleaf.org">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Customers</title>
+    <link rel="stylesheet" th:href="@{/style.css}">
+</head>
+<body>
+<header>
+    <div class="content-header">
+        <h1>Spring Boot</h1>
+        <p><em>Um framework para criação de API - Desenvolvendo Controle de Clientes</em></p>
+
+    </div>
+</header>
+<main>
+    <section class="content-introduction">
+        <h1>Projeto Spring Boot</h1>
+        <p>Controle de Clientes - API Desenvolvida por <em>Rafael Oliveira</em></p>
+
+    </section>
+    <section class="content-register">
+        <h1>Cadastro de Clientes</h1>
+        <form th:action="@{/home/new/create}" th:object="${customer}" method="post">
+
+            <label>Nome:</label>
+            <input type="text" th:field="*{name}" placeholder="Digite seu nome">
+
+            <label>E-mail:</label>
+            <input type="email" th:field="*{email}" placeholder="Digite seu E-mail">
+
+            <label>Cidade:</label>
+            <input type="text" th:field="*{city}" placeholder="Digite sua cidade">
+
+            <label>País:</label>
+            <input type="text" th:field="*{country}" placeholder="Digite seu país"><br>
+
+            <label>Rua:</label>
+            <input type="text" th:field="*{road}" placeholder="Ex: Rua João">
+
+            <label>Idade:</label>
+            <input type="number" th:field="*{age}" placeholder="Ex: 20"><br>
+
+            <label>Tipo de Cliente:</label><br><br>
+            <select th:field="*{typeCustomers}">
+                <option value="Premium">Premium</option>
+                <option value="Basic">Basic</option>
+            </select>
+
+            <div class="buttons">
+                <button class="display"><a href="">CLIENTES</a></button>
+
+                <button type="submit">CADASTRAR</button>
+            </div>
+        </form>
+    </section>
+    <!--<img src="IMAGEM-ZENVIA.jpg" width="400px" class="imagem" alt=""> -->
+</main>
+</body>
+</html>
