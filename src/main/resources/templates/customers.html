@@ -1,11 +1,58 @@
 <!DOCTYPE html>
-<html lang="pt-br">
+<html lang="pt-br" xmlns:th="http://www.thymeleaf.org">
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Clientes</title>
+    <link rel="stylesheet" th:href="@{/customers.css}">
+    <link rel="shortcut icon" th:href="@{/Spring_Boot.svg.ico}" type="image/x-icon">
 </head>
 <body>
-<h1>Clientes exibindo...</h1>
+<header>
+    <h1>Clientes Cadastrados</h1>
+</header>
+<section>
+    <div class="controle">
+        <a th:if="${customersPage.hasPrevious()}"
+           th:href="@{/home/customers(page=${customersPage.number - 1})}">Anterior
+        </a>
+        <span>
+        <em>Página <span th:text="${customersPage.number + 1}"></span>
+        de <span th:text="${customersPage.totalPages}"></span></em>
+    </span>
+        <a th:if="${customersPage.hasNext()}"
+           th:href="@{/home/customers(page=${customersPage.number + 1})}">
+            <em> Próxima </em>
+        </a>
+    </div>
+    <p th:if="${#lists.isEmpty(customers)}">Sem clientes cadastrados!!</p>
+    <table border="1" th:if="${!#lists.isEmpty(customers)}">
+        <thead>
+        <tr>
+            <th>Nome</th>
+            <th>E-mail</th>
+            <th>Idade</th>
+            <th>Tipo</th>
+            <th>Rua</th>
+            <th>País</th>
+            <th>Cidade</th>
+        </tr>
+        </thead>
+        <tbody>
+        <tr th:each="customer : ${customers}">
+            <td th:text="${customer.name}"></td>
+            <td th:text="${customer.email}"></td>
+            <td th:text="${customer.age}"></td>
+            <td th:text="${customer.typeCustomers}"></td>
+            <td th:text="${customer.road}"></td>
+            <td th:text="${customer.country}"></td>
+            <td th:text="${customer.city}"></td>
+        </tr>
+        </tbody>
+    </table>
+</section>
+<div class="button">
+    <button><a th:href="@{/home}">CADASTRAR</a></button>
+</div>
 </body>
 </html>
