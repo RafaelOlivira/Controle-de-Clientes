@@ -56,7 +56,7 @@ main .content-register{
     background-color:  rgba(77, 189, 233, 0.5);
     width: 620px;
     padding-left: 30px;
-    padding-top: 30px;
+    padding-top: 15px;
     padding-right: 55px;
     padding-bottom: 50px;
     border-radius: 10px;
@@ -117,16 +117,20 @@ button{
     cursor: pointer;
     font-size: 18px;
     font-weight: bold;
+    color:rgba(77, 189, 233, 1);
+}
+select{
+    padding:10px;
+    border:black solid 1px;
+    cursor:pointer;
+    border-radius:4px;
+    color:rgba(77,189,233,1);
 }
 a{
     text-decoration:none;
-    color:black;
+    color:rgba(77, 189, 233, 1);
 }
 
 /*Fim section*/
 
 /*Imagem*/
-
-.imagem{
-
-}
