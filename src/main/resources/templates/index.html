@@ -5,6 +5,7 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Customers</title>
     <link rel="stylesheet" th:href="@{/style.css}">
+    <link rel="shortcut icon" th:href="@{/Spring_Boot.svg.ico}" type="image/x-icon">
 </head>
 <body>
 <header>
@@ -49,11 +50,11 @@
             </select>
 
             <div class="buttons">
-                <button class="display"><a href="">CLIENTES</a></button>
 
                 <button type="submit">CADASTRAR</button>
             </div>
         </form>
+        <button class="display"><a th:href="@{/home/customers}" >CLIENTES</a></button>
     </section>
     <!--<img src="IMAGEM-ZENVIA.jpg" width="400px" class="imagem" alt=""> -->
 </main>
