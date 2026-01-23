@@ -4,8 +4,9 @@
 
 
 ### Tela de Cadastro de Clientes
-![Tela - 1 Cadastro](Tela-1-Nova.png)
+![Tela - 2 Exibir Clientes](Tela-2-Nova.png)
+ 
 
 
 ### Exibição de Clientes
-![Tela - 2 Exibir Clientes](Tela-2-Nova.png)
+![Tela - 1 Cadastro](Tela-1-Nova.png)
