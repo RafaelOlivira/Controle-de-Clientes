@@ -4,57 +4,69 @@
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Customers</title>
+    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.8/dist/css/bootstrap.min.css" rel="stylesheet"
+          integrity="sha384-sRIl4kxILFvY47J16cr9ZwB07vP4J8+LH7qKQnuqkuIAvNWLzeN8tE5YBujZqJLB" crossorigin="anonymous">
     <link rel="stylesheet" th:href="@{/style.css}">
     <link rel="shortcut icon" th:href="@{/Spring_Boot.svg.ico}" type="image/x-icon">
 </head>
 <body>
 <header>
-    <div class="content-header">
-        <h1>Spring Boot</h1>
+    <div class="navbar navbar-expand-lg bg-body-tertiary text-white" data-bs-theme="dark">
+        <h1 class="mx-3 display-6">Spring Boot</h1>
+
         <p><em>Um framework para criação de API - Desenvolvendo Controle de Clientes</em></p>
 
     </div>
 </header>
 <main>
-    <section class="content-introduction">
-        <h1>Projeto Spring Boot</h1>
-        <p>Controle de Clientes - API Desenvolvida por <em>Rafael Oliveira</em></p>
-
+    <section class="content-introduction mt-5 ms-5 dark" >
+        <h1 class="display-6 ms-3">Projeto Spring Boot</h1>
+        <p class="ms-2">Controle de Clientes - API Desenvolvida por <em>Rafael Oliveira</em></p>
+        <a th:href="@{/home/customers}"><button class="btn btn-primary ms-5" >CLIENTES</button></a>
     </section>
-    <section class="content-register">
-        <h1>Cadastro de Clientes</h1>
-        <form th:action="@{/home/new/create}" th:object="${customer}" method="post">
+    <section class="container-fluid w-50 mx-auto mt-4 mb-3 col-12">
+        <h1 class="col-9">Cadastro de Clientes</h1>
+        <form th:action="@{/home/new/create}" th:object="${customer}" method="post" class="mb-3 col-12">
+            <div class="row">
+                <div class="col-6">
+                    <label class="form-label mt-1">Nome:</label>
+                    <input class="form-control" type="text" th:field="*{name}" placeholder="Digite seu nome:">
+                </div>
+                <div class="col-6">
+                    <label class="form-label col-6 mt-1">E-mail:</label>
+                    <input class="form-control col-6" type="email" th:field="*{email}" placeholder="Digite seu E-mail:">
+                </div>
+                <div class="col-4">
+                    <label class="form-label mt-1">Cidade:</label>
+                    <input class="form-control" type="text" th:field="*{city}" placeholder="Digite sua cidade:">
+                </div>
+                <div class="col-4">
+                    <label class="form-label mt-1">País:</label>
+                    <input class="form-control" type="text" th:field="*{country}" placeholder="Digite seu país?:">
+                </div>
+                <div class="col-6">
+                    <label class="form-label mt-1">Rua:</label>
+                    <input class="form-control" type="text" th:field="*{road}" placeholder="Ex: Rua João:">
+                </div>
 
-            <label>Nome:</label>
-            <input type="text" th:field="*{name}" placeholder="Digite seu nome">
+                <div class="col-2">
+                    <label class="form-label mt-1">Idade:</label>
+                    <input class="form-control" type="number" min="0" th:field="*{age}" placeholder="Ex: 20:">
+                </div>
+                <div class="col-3">
+                    <label class="form-label mt-1">Tipo de Cliente:</label>
+                    <select class="form-select" th:field="*{typeCustomers}">
+                        <option value="Premium">Premium</option>
+                        <option value="Basic">Basic</option>
+                    </select>
+                </div>
 
-            <label>E-mail:</label>
-            <input type="email" th:field="*{email}" placeholder="Digite seu E-mail">
+                <button class="btn btn-primary col-3 mt-4 ms-4" type="submit">CADASTRAR</button>
 
-            <label>Cidade:</label>
-            <input type="text" th:field="*{city}" placeholder="Digite sua cidade">
-
-            <label>País:</label>
-            <input type="text" th:field="*{country}" placeholder="Digite seu país"><br>
-
-            <label>Rua:</label>
-            <input type="text" th:field="*{road}" placeholder="Ex: Rua João">
-
-            <label>Idade:</label>
-            <input type="number" th:field="*{age}" placeholder="Ex: 20"><br>
-
-            <label>Tipo de Cliente:</label><br><br>
-            <select th:field="*{typeCustomers}">
-                <option value="Premium">Premium</option>
-                <option value="Basic">Basic</option>
-            </select>
-
-            <div class="buttons">
-
-                <button type="submit">CADASTRAR</button>
             </div>
         </form>
-        <button class="display"><a th:href="@{/home/customers}" >CLIENTES</a></button>
+
+
     </section>
     <!--<img src="IMAGEM-ZENVIA.jpg" width="400px" class="imagem" alt=""> -->
 </main>
