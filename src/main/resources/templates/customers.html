@@ -4,15 +4,20 @@
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Clientes</title>
+    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.8/dist/css/bootstrap.min.css" rel="stylesheet"
+          integrity="sha384-sRIl4kxILFvY47J16cr9ZwB07vP4J8+LH7qKQnuqkuIAvNWLzeN8tE5YBujZqJLB" crossorigin="anonymous">
     <link rel="stylesheet" th:href="@{/customers.css}">
     <link rel="shortcut icon" th:href="@{/Spring_Boot.svg.ico}" type="image/x-icon">
 </head>
 <body>
 <header>
-    <h1>Clientes Cadastrados</h1>
+    <div class="navbar navbar-expand-lg bg-body-tertiary text-white" data-bs-theme="dark">
+        <h1 class="mx-3 display-6">Clientes Cadastrados</h1>
+    </div>
 </header>
-<section>
-    <div class="controle">
+<section class="col-12">
+
+    <div class="controle mt-2 ms-3">
         <a th:if="${customersPage.hasPrevious()}"
            th:href="@{/home/customers(page=${customersPage.number - 1})}">Anterior
         </a>
@@ -26,16 +31,20 @@
         </a>
     </div>
     <p th:if="${#lists.isEmpty(customers)}">Sem clientes cadastrados!!</p>
-    <table border="1" th:if="${!#lists.isEmpty(customers)}">
-        <thead>
+
+    <div class="container-fluid col-12 mt-5">
+
+    <table border="1" th:if="${!#lists.isEmpty(customers)}" class="table table-striped mb-3 col-12 table-bordered table-light ">
+
+        <thead >
         <tr>
-            <th>Nome</th>
-            <th>E-mail</th>
-            <th>Idade</th>
-            <th>Tipo</th>
-            <th>Rua</th>
-            <th>País</th>
-            <th>Cidade</th>
+            <th scope="col">Nome</th>
+            <th scope="col">E-mail</th>
+            <th scope="col">Idade</th>
+            <th scope="col">Tipo</th>
+            <th scope="col">Rua</th>
+            <th scope="col">País</th>
+            <th scope="col">Cidade</th>
         </tr>
         </thead>
         <tbody>
@@ -49,10 +58,12 @@
             <td th:text="${customer.city}"></td>
         </tr>
         </tbody>
+
     </table>
+    </div>
 </section>
-<div class="button">
-    <button><a th:href="@{/home}">CADASTRAR</a></button>
+<div class="ms-3">
+    <a th:href="@{/home}"> <button class="btn btn-primary"> CADASTRAR</button></a>
 </div>
 </body>
 </html>
