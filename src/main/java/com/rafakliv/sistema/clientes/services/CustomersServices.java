@@ -31,6 +31,11 @@ public class CustomersServices {
         return customersRepository.findAll(pageable);
     }
 
+    // Update customer
+    public void updateCustomer(CustomersModels customersModels){
+        customersRepository.save(customersModels);
+    }
+
     // Remove Customers
     public void removeCustomers(UUID uuid) {
         customersRepository.deleteById(uuid);
@@ -56,12 +61,21 @@ public class CustomersServices {
 
 
     // Find By name
-    public CustomersModels findByName(String name) {
+  /*  public CustomersModels findByName(String name) {
         var customer = customersRepository.findByName(name);
         if (customer == null) {
             throw new NullPointerException("Customer not found");
         }
         return customer;
+    }*/
+
+    // Find By Name com possiveis resultados maiores que 1
+    public Page<CustomersModels> findByNames(String name, Pageable pageable){
+        Page<CustomersModels> customersModelsList = customersRepository.findByName(name,pageable);
+        if(customersModelsList == null){
+            throw new NullPointerException("Customer not found");
+        }
+        return customersModelsList;
     }
 
     // Find By Country
