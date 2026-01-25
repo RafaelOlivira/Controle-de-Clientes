@@ -108,7 +108,6 @@ public class TemplateController {
             model.addAttribute("customersPage", customersPage);
             model.addAttribute("customers", customersPage.getContent());
             model.addAttribute("customers",customersModelsPage);
-            System.out.println("Olá ambos");
             return "customers";
         }
         Page<CustomersModels> customersModelsPage = customersServices.findByTypeCustomers(tipo,pageable);
