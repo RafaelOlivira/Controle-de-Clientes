@@ -59,7 +59,7 @@ public class FindControllers {
         }
     }
 
-    @GetMapping("/name/{name}")
+ /*   @GetMapping("/name/{name}")
     public ResponseEntity<?> findByName(@PathVariable String name){
         try {
             var customer = customersServices.findByName(name);
@@ -68,7 +68,7 @@ public class FindControllers {
             var errorMessage = new ErrorMessage(e.getMessage(),"NOT_FOUND");
             return ResponseEntity.status(404).body(errorMessage);
         }
-    }
+    }*/
 
     @Cacheable(value = "findByCountry" , key = "#email + '-' + #pageable.pageNumber + '-' + #pageable.pageSize + '-' ")
     @GetMapping("/country/{country}")
