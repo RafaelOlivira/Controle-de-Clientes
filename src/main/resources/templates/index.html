@@ -19,18 +19,22 @@
     </div>
 </header>
 <main>
-    <section class="content-introduction mt-5 ms-5 dark" >
+    <section class="content-introduction mt-5 ms-5 dark">
         <h1 class="display-6 ms-3">Projeto Spring Boot</h1>
         <p class="ms-2">Controle de Clientes - API Desenvolvida por <em>Rafael Oliveira</em></p>
-        <a th:href="@{/home/customers}"><button class="btn btn-primary ms-5" >CLIENTES</button></a>
+        <a th:href="@{/home/customers}">
+            <button class="btn btn-primary ms-5">CLIENTES</button>
+        </a>
     </section>
     <section class="container-fluid w-50 mx-auto mt-4 mb-3 col-12">
         <h1 class="col-9">Cadastro de Clientes</h1>
         <form th:action="@{/home/new/create}" th:object="${customer}" method="post" class="mb-3 col-12">
             <div class="row">
                 <div class="col-6">
-                    <label class="form-label mt-1">Nome:</label>
-                    <input class="form-control" type="text" th:field="*{name}" placeholder="Digite seu nome:">
+                    <label class="form-label mt-1" for="validationDefault01">Nome:</label>
+                    <input class="form-control" type="text" th:field="*{name}" placeholder="Digite seu nome:"
+                           id="validationDefault01">
+
                 </div>
                 <div class="col-6">
                     <label class="form-label col-6 mt-1">E-mail:</label>
@@ -42,7 +46,7 @@
                 </div>
                 <div class="col-4">
                     <label class="form-label mt-1">País:</label>
-                    <input class="form-control" type="text" th:field="*{country}" placeholder="Digite seu país?:">
+                    <input class="form-control" type="text" th:field="*{country}" placeholder="Digite seu país:">
                 </div>
                 <div class="col-6">
                     <label class="form-label mt-1">Rua:</label>
@@ -61,11 +65,14 @@
                     </select>
                 </div>
 
+                <span class="alert alert-danger"
+                      th:if="${errorFormulario}">Preencha todos os campos</span>
+
                 <button class="btn btn-primary col-3 mt-4 ms-4" type="submit">CADASTRAR</button>
+
 
             </div>
         </form>
-
 
     </section>
     <!--<img src="IMAGEM-ZENVIA.jpg" width="400px" class="imagem" alt=""> -->
