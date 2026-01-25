@@ -1,10 +1,85 @@
 <!DOCTYPE html>
-<html lang="en">
+<html lang="pt-br" xmlns:th="http://www.thymeleaf.org">
 <head>
-  <meta charset="UTF-8">
-  <title>$Title$</title>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Atualizar</title>
+    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.8/dist/css/bootstrap.min.css" rel="stylesheet"
+          integrity="sha384-sRIl4kxILFvY47J16cr9ZwB07vP4J8+LH7qKQnuqkuIAvNWLzeN8tE5YBujZqJLB" crossorigin="anonymous">
+    <link rel="stylesheet" th:href="@{/style.css}">
+    <link rel="shortcut icon" th:href="@{/Spring_Boot.svg.ico}" type="image/x-icon">
 </head>
 <body>
-$END$
+<header>
+    <div class="navbar navbar-expand-lg bg-body-tertiary text-white" data-bs-theme="dark">
+        <h1 class="mx-3 display-6">Spring Boot</h1>
+
+        <a th:href="@{/home}">
+            <button class="btn btn-primary" onclick="return confirm('Ao sair da página os dados de atualização seram perdidos!')"> CADASTRAR</button>
+        </a>
+        <a th:href="@{/home/customers}">
+            <button class="btn btn-success ms-2" onclick="return confirm('Ao sair da página os dados de atualização seram perdidos!')"> CLIENTES</button>
+        </a>
+    </div>
+</header>
+<main>
+    <section class="container-fluid w-50 mx-auto mt-4 mb-3 col-12">
+        <h1 class="col-9">Atualizar Cliente</h1>
+        <form th:action="@{/home/confirmar/atualizacao}" th:object="${customer}" method="post" class="mb-3 col-12">
+            <div class="row">
+
+                <div class="col-6">
+                    <label class="form-label mt-1" for="validationDefault0">Id:</label>
+                    <input class="form-control" type="text" th:field="*{uuid}" readonly
+                           id="validationDefault0" style="cursor:default;">
+
+                </div>
+                <div class="col-6">
+                    <label class="form-label mt-1" for="validationDefault01">Nome:</label>
+                    <input class="form-control" type="text" th:field="*{name}" placeholder="Digite seu nome:"
+                           id="validationDefault01">
+
+                </div>
+                <div class="col-6">
+                    <label class="form-label col-6 mt-1">E-mail:</label>
+                    <input class="form-control col-6" type="email" th:field="*{email}" placeholder="Digite seu E-mail:">
+                </div>
+                <div class="col-4">
+                    <label class="form-label mt-1">Cidade:</label>
+                    <input class="form-control" type="text" th:field="*{city}" placeholder="Digite sua cidade:">
+                </div>
+                <div class="col-4">
+                    <label class="form-label mt-1">País:</label>
+                    <input class="form-control" type="text" th:field="*{country}" placeholder="Digite seu país:">
+                </div>
+                <div class="col-6">
+                    <label class="form-label mt-1">Rua:</label>
+                    <input class="form-control" type="text" th:field="*{road}" placeholder="Ex: Rua João:">
+                </div>
+
+                <div class="col-2">
+                    <label class="form-label mt-1">Idade:</label>
+                    <input class="form-control" type="number" min="0" th:field="*{age}" placeholder="Ex: 20:">
+                </div>
+                <div class="col-3">
+                    <label class="form-label mt-1">Tipo de Cliente:</label>
+                    <select class="form-select" th:field="*{typeCustomers}">
+                        <option value="Premium">Premium</option>
+                        <option value="Basic">Basic</option>
+                    </select>
+                </div>
+
+                <span class="alert alert-danger"
+                      th:if="${errorFormulario}">Preencha todos os campos</span>
+
+                <button class="btn btn-primary col-3 mt-4 ms-4" type="submit" onclick="return confirm('Deseja realmente alterar os dados?')">ATUALIZAR</button>
+
+
+            </div>
+        </form>
+
+    </section>
+    <!--<img src="IMAGEM-ZENVIA.jpg" width="400px" class="imagem" alt=""> -->
+</main>
 </body>
 </html>
