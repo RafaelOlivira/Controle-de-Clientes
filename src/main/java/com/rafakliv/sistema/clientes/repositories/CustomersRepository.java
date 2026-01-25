@@ -17,7 +17,10 @@ public interface CustomersRepository extends JpaRepository<CustomersModels, UUID
 
     CustomersModels findByUuid(UUID uuid);
 
-    CustomersModels findByName(String name);
+  /*  CustomersModels findByName(String name);*/
+
+    Page<CustomersModels> findByName(String name, Pageable pageable);
+
 
     Page<CustomersModels> findByCountry(String country, Pageable pageable);
 
@@ -26,4 +29,6 @@ public interface CustomersRepository extends JpaRepository<CustomersModels, UUID
     Page<CustomersModels> findByTypeCustomers(String typeCustomers,Pageable pageable);
 
     Page<CustomersModels> findByRoad(String road,Pageable pageable);
+    
+
 }
