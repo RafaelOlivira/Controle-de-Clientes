@@ -13,7 +13,7 @@ import java.util.UUID;
 @Repository
 public interface CustomersRepository extends JpaRepository<CustomersModels, UUID> {
 
-    Optional<CustomersModels> findByEmail(String email);
+    Page<CustomersModels> findByEmail(String email,Pageable pageable);
 
     CustomersModels findByUuid(UUID uuid);
 

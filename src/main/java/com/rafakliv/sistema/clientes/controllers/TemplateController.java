@@ -116,7 +116,20 @@ public class TemplateController {
         model.addAttribute("customersPage", customersPage);
         model.addAttribute("customers", customersPage.getContent());
         model.addAttribute("customers",customersModelsPage);
-        model.addAttribute("tipo",tipo);
+        return "customers";
+    }
+    @PostMapping("/busca/email")
+    public String findByEmail(@RequestParam("email") String email, Model model, @PageableDefault(size = 10,sort = "uuid") Pageable pageable){
+        if(email == null) {
+            return "redirect:/home/customers";
+        }
+        Page<CustomersModels> customersModelsPage = customersServices.findByEmail(email,pageable);
+        Page<CustomersModels> customersPage = customersServices.displayCustomers(pageable);
+
+
+        model.addAttribute("customersPage", customersPage);
+        model.addAttribute("customers", customersPage.getContent());
+        model.addAttribute("customers",customersModelsPage);
         return "customers";
     }
 }

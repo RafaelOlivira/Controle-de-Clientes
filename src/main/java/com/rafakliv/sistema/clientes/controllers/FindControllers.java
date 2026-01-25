@@ -33,16 +33,16 @@ public class FindControllers {
     }
 
 
-    @GetMapping("/email/{email}")
-    public ResponseEntity<?> findByEmail(@PathVariable String email){
-        try {
-            var customer = customersServices.findByEmail(email);
-            return ResponseEntity.ok(customer);
-        }catch (NullPointerException e){
-            var errorMessage = new ErrorMessage(e.getMessage(),"NOT_FOUND");
-            return ResponseEntity.status(404).body(errorMessage);
-        }
-    }
+//    @GetMapping("/email/{email}")
+//    public ResponseEntity<?> findByEmail(@PathVariable String email){
+//        try {
+//            var customer = customersServices.findByEmail(email,);
+//            return ResponseEntity.ok(customer);
+//        }catch (NullPointerException e){
+//            var errorMessage = new ErrorMessage(e.getMessage(),"NOT_FOUND");
+//            return ResponseEntity.status(404).body(errorMessage);
+//        }
+//    }
 
     @GetMapping("/id/{uuid}")
     public ResponseEntity<?> findByUuid(@PathVariable UUID uuid){

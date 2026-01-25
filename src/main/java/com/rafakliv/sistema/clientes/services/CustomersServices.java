@@ -42,8 +42,8 @@ public class CustomersServices {
     }
 
     // Find By Email
-    public Optional<CustomersModels> findByEmail(String email) {
-        var customer = customersRepository.findByEmail(email);
+    public Page<CustomersModels> findByEmail(String email,Pageable pageable) {
+        var customer = customersRepository.findByEmail(email,pageable);
         if (customer == null) {
             throw new NullPointerException("Customer not found");
         }
