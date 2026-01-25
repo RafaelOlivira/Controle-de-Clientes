@@ -13,11 +13,28 @@
 <header>
     <div class="navbar navbar-expand-lg bg-body-tertiary text-white" data-bs-theme="dark">
         <h1 class="mx-3 display-6">Clientes Cadastrados</h1>
+
+        <a th:href="@{/home}"> <!--Voltar para a aba de cadastro-->
+            <button class="btn btn-primary"> CADASTRAR</button>
+        </a>
+
+        <a th:href="@{/home/customers}"> <!--Voltar para a aba de clientes-->
+            <button class="btn btn-success ms-2"> CLIENTES</button>
+        </a>
+        <form th:action="@{/home/busca/tipo}" method="post"> <!--Mecanismo de busca por tipo de cliente-->
+                <select class="form-select ms-5"  data-bs-theme="dark"  name="tipo" onchange="this.form.submit()">
+                    <option value="" disabled selected hidden>ESCOLHER TIPO</option>
+                    <option value="Ambos">Ambos</option>
+                    <option value="Basic">Basic</option>
+                    <option value="Premium">Premium</option>
+                </select>
+        </form>
     </div>
+
 </header>
 <section class="col-12">
 
-    <div class="controle mt-2 ms-3">
+    <div class="controle mt-2 ms-3"> <!--Div de controle para voltar ou avançar páginas-->
         <a th:if="${customersPage.hasPrevious()}"
            th:href="@{/home/customers(page=${customersPage.number - 1})}">Anterior
         </a>
@@ -30,40 +47,73 @@
             <em> Próxima </em>
         </a>
     </div>
-    <p th:if="${#lists.isEmpty(customers)}">Sem clientes cadastrados!!</p>
+    <p th:if="${#lists.isEmpty(customers)}" class="ms-2 mt-2">Clientes não encontrados!!</p>
 
     <div class="container-fluid col-12 mt-5">
+        <span th:if="${error != null}" th:text="${error}" class="text-danger"></span>
+        <form th:action="@{/home/delete/id}" method="post"> <!--Exibição de Clientes-->
+            <table border="1" th:if="${!#lists.isEmpty(customers)}"
+                   class="table table-striped mb-3 col-12 table-bordered table-light ">
+                <thead>
+                <tr>
+                    <th>Selecionar</th>
+                    <th scope="col">Nome</th>
+                    <th scope="col">E-mail</th>
+                    <th scope="col">Idade</th>
+                    <th scope="col">Tipo</th>
+                    <th scope="col">Rua</th>
+                    <th scope="col">País</th>
+                    <th scope="col">Cidade</th>
 
-    <table border="1" th:if="${!#lists.isEmpty(customers)}" class="table table-striped mb-3 col-12 table-bordered table-light ">
 
-        <thead >
-        <tr>
-            <th scope="col">Nome</th>
-            <th scope="col">E-mail</th>
-            <th scope="col">Idade</th>
-            <th scope="col">Tipo</th>
-            <th scope="col">Rua</th>
-            <th scope="col">País</th>
-            <th scope="col">Cidade</th>
-        </tr>
-        </thead>
-        <tbody>
-        <tr th:each="customer : ${customers}">
-            <td th:text="${customer.name}"></td>
-            <td th:text="${customer.email}"></td>
-            <td th:text="${customer.age}"></td>
-            <td th:text="${customer.typeCustomers}"></td>
-            <td th:text="${customer.road}"></td>
-            <td th:text="${customer.country}"></td>
-            <td th:text="${customer.city}"></td>
-        </tr>
-        </tbody>
+                </tr>
+                </thead>
+                <tbody>
+                <tr th:each="customer : ${customers}">
+                    <td>
+                        <input type="radio"
+                               name="customerId"
+                               th:value="${customer.uuid}">
+                    </td>
+                    <td th:text="${customer.name}"></td>
+                    <td th:text="${customer.email}"></td>
+                    <td th:text="${customer.age}"></td>
+                    <td th:text="${customer.typeCustomers}"></td>
+                    <td th:text="${customer.road}"></td>
+                    <td th:text="${customer.country}"></td>
+                    <td th:text="${customer.city}"></td>
+                </tr>
+                </tbody>
 
-    </table>
+            </table>
+        <!--    Excluir cliente selecionado-->
+            <button type="submit"
+                    class="btn btn-danger ms-5"
+                    formaction="/home/delete/id"
+                    onclick="return confirm('Deseja excluir este cliente?')">
+                EXCLUIR
+            </button>
+
+            <!--Atualizar cliente selecionado-->
+            <button type="submit"
+                    class="btn btn-warning ms-2"
+                    formaction="/home/atualizar/id">
+                ATUALIZAR
+            </button>
+        </form>
+
+        <form th:action="@{/home/busca/nome}" method="post"> <!--Buscar por nome...-->
+            <div class="buscador mt-5 ms-4 ">
+                <input type="text" id="textBusca" name="busca" placeholder="Buscar por nome...:">
+                <button type="submit"
+                        class="btn btn-dark ms-1"
+                >
+                    BUSCAR
+                </button>
+            </div>
+        </form>
+
     </div>
 </section>
-<div class="ms-3">
-    <a th:href="@{/home}"> <button class="btn btn-primary"> CADASTRAR</button></a>
-</div>
 </body>
 </html>
