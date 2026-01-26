@@ -1,5 +1,3 @@
-### 🔨🚧 Em desenvolvimento...
-
 ### Projeto CRUD - Spring Boot (Controle de Clientes)
 
 Projeto Simples feito para desenvolver minha habilidades nas seguintes tecnologias:
