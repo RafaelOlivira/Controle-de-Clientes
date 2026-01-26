@@ -10,7 +10,9 @@ Projeto Simples feito para desenvolver minha habilidades nas seguintes tecnologi
 - Bootstrap
 - Postgresql
 
+___
 
+O usuário terá a possibilidade de criar, atualizar, deletar e visualizar os clientes no sistema!
 
 
 ### Tela de Cadastro de Clientes
