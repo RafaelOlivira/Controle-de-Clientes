@@ -4,7 +4,7 @@
 
 
 ### Tela de Cadastro de Clientes
-![Tela - 2 Exibir Clientes](Tela-2-Nova.png)
+![Tela - 2 Tela-Inicial](imagens/img1.png)
  
 
 
