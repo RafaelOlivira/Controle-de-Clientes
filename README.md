@@ -10,8 +10,8 @@ Projeto Simples feito para desenvolver minha habilidades nas seguintes tecnologi
 
 ___
 
-O usuário terá a possibilidade de criar, atualizar, deletar e visualizar os clientes no sistema!
-\\O sistema possui um visual simples e de facil usabilidade.
+O usuário terá a possibilidade de criar, atualizar, deletar e visualizar os clientes no sistema!  
+O sistema possui um visual simples e de facil usabilidade.
 
 
 ### Tela de Cadastro de Clientes
