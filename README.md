@@ -9,4 +9,4 @@
 
 
 ### Exibição de Clientes
-![Tela - 1 Cadastro](Tela-1-Nova.png)
+![Tela - 1 Exibição de Clientes](imagens/img2.png)
