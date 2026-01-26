@@ -1,6 +1,7 @@
+![Icone do Spring Boot](imagens/spring-boot.png)
 ### Projeto CRUD - Spring Boot (Controle de Clientes)
 
-Projeto Simples feito para desenvolver minha habilidades nas seguintes tecnologias:
+Projeto Simples feito para desenvolver minha habilidades nas seguintes tecnologias:  
 
 - Java
 - Spring Boot
