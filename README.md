@@ -2,6 +2,16 @@
 
 ### Projeto CRUD - Spring Boot (Controle de Clientes)
 
+Projeto Simples feito para desenvolver minha habilidades nas seguintes tecnologias:
+
+- Java
+- Spring Boot
+- Thymeleaf
+- Bootstrap
+- Postgresql
+
+
+
 
 ### Tela de Cadastro de Clientes
 ![Tela - 1 Tela-Inicial](imagens/img1.png)
